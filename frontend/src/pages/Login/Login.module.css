@@ -1,0 +1,91 @@
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+  padding: 2rem;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 450px;
+  background-color: #0a0a0a;
+  padding: 4rem;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.loginCard h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.loginCard p {
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+}
+
+.inputGroup {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+}
+
+.inputGroup input:focus {
+  border-color: var(--color-yellow);
+  outline: none;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--color-yellow);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 950;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.loginBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 214, 0, 0.3);
+}
+
+.footer {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.linkBtn {
+  background: none;
+  border: none;
+  color: var(--color-yellow);
+  font-weight: 800;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}

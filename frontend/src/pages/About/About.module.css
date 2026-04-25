@@ -1,0 +1,132 @@
+.aboutPage {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.hero {
+  padding: 180px 0 100px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 950;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+
+.hero span {
+  color: var(--color-yellow);
+}
+
+/* --- STORY SECTION --- */
+.storySection {
+  padding: 100px 0;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.storyImage {
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  height: 600px;
+}
+
+.storyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyContent h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.storyContent p {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* --- VALUES --- */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 80px;
+}
+
+.valueCard {
+  background-color: #0a0a0a;
+  padding: 3rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-yellow);
+}
+
+.valueCard h3 {
+  color: var(--color-yellow);
+  margin-bottom: 1rem;
+}
+
+/* --- ODISHA PRIDE --- */
+.odishaPride {
+  background-color: #111;
+  padding: 100px 0;
+  margin: 100px 0;
+  text-align: center;
+}
+
+.odishaPride h2 {
+  font-size: clamp(2rem, 6vw, 5rem);
+  margin-bottom: 2rem;
+}
+
+.statsSection {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 4rem;
+}
+
+.statItem h4 {
+  font-size: 3.5rem;
+  color: var(--color-yellow);
+}
+
+.statItem p {
+  color: var(--color-text-muted);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 968px) {
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .storyImage {
+    height: 400px;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  .statsSection {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

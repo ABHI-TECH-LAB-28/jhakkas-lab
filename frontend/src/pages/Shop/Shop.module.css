@@ -1,0 +1,439 @@
+.shopPage {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  padding-bottom: 80px;
+}
+
+.shopHeader {
+  padding: 160px 0 60px;
+}
+
+.spotlightCard {
+  background: linear-gradient(135deg, #111 0%, #000 100%);
+  border: 1px solid rgba(255, 214, 0, 0.2);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 3rem; 
+  gap: 2rem; 
+  position: relative;
+}
+
+.spotlightContent {
+  flex: 1;
+  z-index: 2;
+}
+
+.spotlightBadge {
+  background-color: var(--color-yellow);
+  color: #000;
+  padding: 6px 15px;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.spotlightContent h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 950;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.spotlightContent p {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 450px;
+}
+
+.spotlightPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.newPrice {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color-yellow);
+}
+
+.oldPriceSpot {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.spotlightBtn {
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.spotlightBtn:hover {
+  background-color: var(--color-yellow);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 214, 0, 0.3);
+}
+
+.spotlightImage {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.spotlightImage img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 0 30px rgba(255, 214, 0, 0.2));
+}
+
+.glowEffect {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: var(--color-yellow);
+  filter: blur(150px);
+  opacity: 0.15;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .spotlightCard {
+    flex-direction: column;
+    padding: 3rem;
+    text-align: center;
+  }
+  .spotlightContent p {
+    margin: 0 auto 2.5rem;
+  }
+  .spotlightPrice {
+    justify-content: center;
+  }
+}
+
+.shopContent {
+  padding: 40px 0;
+}
+
+.shopControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+}
+
+.searchAndSort {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  max-width: 500px;
+}
+
+.shopSearch {
+  flex: 2;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.sortSelect {
+  flex: 1;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.shopSearch:focus, .sortSelect:focus {
+  border-color: var(--color-yellow);
+  outline: none;
+}
+
+.filterBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-text);
+}
+
+.filterBtn.active {
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border-color: var(--color-yellow);
+}
+
+.productGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.categorySection {
+  width: 100%;
+}
+
+.categoryTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 2.5rem;
+  color: var(--color-yellow);
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.categoryTitle::after {
+  content: '';
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(to right, rgba(255, 214, 0, 0.3), transparent);
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.productCard {
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.productInfo {
+  padding: 1rem;
+}
+
+.productHeader h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rating {
+  background-color: #26a541; /* Flipkart Green */
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f0f0f0;
+  color: #26a541;
+  font-weight: 900;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.productCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 214, 0, 0.3);
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productImageWrapper {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.productImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-custom);
+}
+
+.productCard:hover .productImageWrapper img {
+  transform: scale(1.1);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: var(--color-yellow);
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-custom);
+}
+
+.productCard:hover .overlay {
+  transform: translateY(0);
+}
+
+.productInfo {
+  padding: 1.5rem;
+}
+
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.productHeader h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.star {
+  color: #ffb800;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-yellow);
+}
+
+.oldPrice {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .shopHeader {
+    padding: 120px 0 40px;
+  }
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,209 @@
+.customOrderPage {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  padding: 150px 0 100px;
+}
+
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+/* --- STEP INDICATOR --- */
+.stepIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.stepDot {
+  width: 40px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  background-color: var(--color-yellow);
+  box-shadow: 0 0 15px rgba(255, 214, 0, 0.4);
+}
+
+/* --- FORM CONTENT --- */
+.stepContent {
+  min-height: 300px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.optionCard {
+  background-color: #111;
+  border: 2px solid transparent;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-custom);
+}
+
+.optionCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 214, 0, 0.3);
+}
+
+.selectedCard {
+  border-color: var(--color-yellow);
+  background-color: rgba(255, 214, 0, 0.05);
+}
+
+.optionCard span {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.optionCard h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.inputGroup label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.inputGroup input, 
+.inputGroup textarea, 
+.inputGroup select {
+  background-color: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.2rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.inputGroup input:focus, 
+.inputGroup textarea:focus {
+  border-color: var(--color-yellow);
+  outline: none;
+}
+
+/* --- BUTTONS --- */
+.buttonRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.nextBtn {
+  flex: 1;
+  padding: 1rem 3rem;
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nextBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nextBtn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 214, 0, 0.3);
+}
+
+.estimateBox {
+  background: linear-gradient(135deg, #111 0%, #000 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-yellow);
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 214, 0, 0.1);
+}
+
+.estimateLabel {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.estimateValue {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 950;
+  color: var(--color-yellow);
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.success {
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .formContainer {
+    padding: 2rem;
+  }
+}

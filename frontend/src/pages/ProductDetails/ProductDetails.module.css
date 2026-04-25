@@ -1,0 +1,405 @@
+.productPage {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  transition: color 0.3s ease;
+}
+
+.backBtn:hover {
+  color: var(--color-yellow);
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* --- LEFT COLUMN: IMAGES --- */
+.imageColumn {
+  position: sticky;
+  top: 120px;
+}
+
+.mainImageWrapper {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-color: #0a0a0a;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.galleryThumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.galleryThumb:hover {
+  opacity: 1;
+}
+
+.activeThumb {
+  border-color: var(--color-yellow);
+  opacity: 1;
+}
+
+.galleryThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- RIGHT COLUMN: INFO --- */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category {
+  text-transform: uppercase;
+  color: var(--color-yellow);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.stars {
+  background-color: #26a541; /* Flipkart Green */
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ratingValue {
+  display: none; /* stars div has value now */
+}
+
+.reviews {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.originalPrice {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.discount {
+  color: #26a541;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.stockStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  color: #ff4d4d;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.stockDot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff4d4d;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.relatedSection {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.relatedCard {
+  cursor: pointer;
+}
+
+.relatedCard img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.reviewsSection {
+  margin-top: 100px;
+  padding: 60px 0;
+}
+
+.reviewsStats {
+  background-color: #0a0a0a;
+  padding: 3rem;
+  border-radius: 24px;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.statsMain h3 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.reviewItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.5rem 0;
+}
+
+.reviewHead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.description {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.variantSection {
+  margin-top: 1rem;
+}
+
+.variantSection h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.colorGrid {
+  display: flex;
+  gap: 1rem;
+}
+
+.colorBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.activeColor {
+  border-color: var(--color-yellow);
+  transform: scale(1.1);
+}
+
+.sizeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sizeBtn {
+  padding: 0.8rem 2rem;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sizeBtn:hover {
+  border-color: var(--color-yellow);
+}
+
+.activeSize {
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border-color: var(--color-yellow);
+}
+
+/* --- ACTIONS --- */
+.actionSection {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.quantityPicker {
+  display: flex;
+  align-items: center;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+}
+
+.quantityPicker button {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.quantityPicker button:hover {
+  color: var(--color-yellow);
+}
+
+.quantityPicker span {
+  width: 40px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.addToCartBtn {
+  flex: 1;
+  padding: 1rem;
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-custom);
+  box-shadow: 0 10px 30px rgba(255, 214, 0, 0.2);
+}
+
+.addToCartBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 214, 0, 0.4);
+}
+
+.added {
+  background-color: #00ff88;
+  color: #000;
+}
+
+.shippingInfo {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.shippingInfo p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 968px) {
+  .productLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .imageColumn {
+    position: static;
+  }
+}

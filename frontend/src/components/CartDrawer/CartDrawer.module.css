@@ -1,0 +1,215 @@
+.backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 100%;
+  max-width: 450px;
+  background-color: #0a0a0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.count {
+  color: var(--color-yellow);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  color: var(--color-text);
+}
+
+.itemsContainer {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.emptyCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+}
+
+.cartItem {
+  display: flex;
+  gap: 1rem;
+}
+
+.itemImage {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #111;
+}
+
+.itemDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemName {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.itemSize {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.itemPrice {
+  color: var(--color-yellow);
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.itemControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.quantityControl button {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.quantityControl button:hover {
+  color: var(--color-yellow);
+}
+
+.quantityControl span {
+  padding: 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.removeBtn:hover {
+  color: #ff4757;
+}
+
+.footer {
+  padding: 2rem;
+  background-color: #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.subtotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.subtotalValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-yellow);
+}
+
+.taxesInfo {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.trustBadges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.trustBadges img {
+  height: 20px;
+  opacity: 0.6;
+  filter: grayscale(100%);
+}
+
+.checkoutBtn {
+  width: 100%;
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border: none;
+  padding: 1.2rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 214, 0, 0.2);
+}
