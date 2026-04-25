@@ -126,3 +126,42 @@ ul {
   background-color: transparent;
   border: 1px solid var(--color-yellow);
 }
+
+/* --- RESPONSIVE UTILITIES --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 5vw;
+  }
+  
+  section {
+    padding: 4rem 0 !important;
+  }
+
+  h1 { font-size: 2.8rem !important; }
+  h2 { font-size: 2.2rem !important; }
+  h3 { font-size: 1.8rem !important; }
+
+  /* Disable custom cursor on mobile for better usability */
+  .custom-cursor {
+    display: none;
+  }
+  * {
+    cursor: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.8rem !important; }
+  h3 { font-size: 1.5rem !important; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+

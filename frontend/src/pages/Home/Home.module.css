@@ -922,4 +922,33 @@
   .newsletterForm {
     flex-direction: column;
   }
+  .hero {
+    padding-top: 120px;
+    min-height: auto;
+    height: auto;
+  }
+  .heroTitle {
+    font-size: 3.2rem !important;
+    line-height: 1.1;
+  }
+  .heroBottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .marqueeContent {
+    font-size: 1.8rem;
+    gap: 1.5rem;
+  }
+  .sectionTitle {
+    font-size: 2.2rem !important;
+  }
+  .bentoGrid {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
 }
+

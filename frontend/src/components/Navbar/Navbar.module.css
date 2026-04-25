@@ -296,16 +296,27 @@
   .mobileToggle {
     display: block;
   }
-  .logoJhakkas {
-    font-size: 2rem;
+  .searchBar {
+    display: none; /* Hide search bar on mobile to save space */
   }
-  .logoLab {
-    font-size: 1.5rem;
+  .actions {
+    gap: 1rem;
   }
-  .logoDivider {
-    height: 1.5rem;
+  .logoImage {
+    height: 80px; /* Smaller logo for mobile */
+    margin-top: -5px;
+    margin-bottom: -5px;
   }
-  .logoBottom {
-    font-size: 0.45rem;
+}
+
+@media (max-width: 480px) {
+  .actions {
+    gap: 0.8rem;
+  }
+  .accountIcon {
+    display: none; /* Hide account icon on very small screens */
+  }
+  .langSwitch {
+    margin-right: 0.5rem;
   }
 }
