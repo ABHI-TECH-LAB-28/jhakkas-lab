@@ -51,9 +51,6 @@ const Footer = () => {
             <h3 className={styles.heading}>Visit Us</h3>
             <p>Bhubaneswar, Odisha</p>
             <p>hello@jhakkaslab.com</p>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer" className={styles.whatsappBtn}>
-              <FiMessageCircle size={20} /> Instant Support
-            </a>
           </div>
         </div>
       </div>
