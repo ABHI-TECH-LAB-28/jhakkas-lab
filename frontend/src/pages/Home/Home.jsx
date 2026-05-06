@@ -1,10 +1,42 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaPenNib, FaTshirt, FaLaptopCode, FaImage, FaVideo, FaPrint, FaHeart, FaShoppingCart } from 'react-icons/fa';
 import styles from './Home.module.css';
 
 const Home = () => {
   const containerRef = useRef(null);
+  const [activeFilter, setActiveFilter] = useState('Design');
+  
+  const serviceFilters = ['Design', 'Printing', 'Art', 'Gifts', 'Decor', 'Website', 'Marketing', 'Custom Orders'];
+  
+  const topServices = [
+    { title: 'Logo Design', icon: <FaPenNib />, desc: 'Bold, memorable identities.' },
+    { title: 'Custom T-Shirts', icon: <FaTshirt />, desc: 'Premium street-art apparel.' },
+    { title: 'Website Design', icon: <FaLaptopCode />, desc: 'High-conversion, immersive web experiences.' },
+    { title: 'Pencil Portraits', icon: <FaImage />, desc: 'Detailed, hand-drawn art.' },
+    { title: 'Posters & Banners', icon: <FaPrint />, desc: 'Striking visuals for any event.' },
+    { title: 'Video Editing', icon: <FaVideo />, desc: 'Dynamic, culture-driven cuts.' }
+  ];
+
+  const featuredProducts = [
+    { id: 1, title: 'Oversized Graphic T-Shirt', price: '₹1499', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80' },
+    { id: 2, title: 'Anime Stickers Pack', price: '₹299', img: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&w=600&q=80' },
+    { id: 3, title: 'Custom Portrait Frame', price: '₹1999', img: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80' },
+    { id: 4, title: 'Handmade Scrap Decor', price: '₹899', img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=600&q=80' },
+    { id: 5, title: 'Personalized Gift Box', price: '₹2499', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' },
+    { id: 6, title: 'Cyberpunk Wall Poster', price: '₹499', img: 'https://images.unsplash.com/photo-1583734551194-279326b014c2?auto=format&fit=crop&w=600&q=80' }
+  ];
+
+  const bestSellingCategories = [
+    { title: 'T-Shirts', img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80' },
+    { title: 'Portraits', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80' },
+    { title: 'Stickers', img: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&w=600&q=80' },
+    { title: 'Posters', img: 'https://images.unsplash.com/photo-1583734551194-279326b014c2?auto=format&fit=crop&w=600&q=80' },
+    { title: 'Gifts', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' },
+    { title: 'Decor', img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=600&q=80' }
+  ];
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -119,186 +151,122 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- SERVICES SECTION --- */}
-      <section className={styles.servicesSection}>
-        <div className={`container ${styles.servicesContainer}`}>
+            {/* --- WHAT WE DO (SERVICE FILTERS) --- */}
+      <section className={styles.servicesFilterSection}>
+        <div className={`container ${styles.servicesFilterContainer}`}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>What We Do</h2>
-            <p className={styles.sectionSubtitle}>From pixels to threads, we craft experiences that leave a mark.</p>
+            <p className={styles.sectionSubtitle}>Creative services made to look Jhakkas 🔥</p>
           </div>
           
-          <div className={styles.bentoGrid}>
-            {/* Spotlight Tile */}
-            <motion.div 
-              className={`${styles.bentoTile} ${styles.tileLarge}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className={styles.tileContent}>
-                <span className={styles.tileNumber}>01</span>
-                <h3>Digital Domination</h3>
-                <p>We don't just build websites; we build digital fortresses. Immersive, lightning-fast, and designed to crush the competition.</p>
-                <div className={styles.tileBadge}>PREMIUM</div>
-              </div>
-            </motion.div>
-
-            {/* Branding Tile */}
-            <motion.div 
-              className={`${styles.bentoTile} ${styles.tileMedium}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className={styles.tileContent}>
-                <span className={styles.tileNumber}>02</span>
-                <h3>Visual Identity</h3>
-                <p>Street-art grit meets corporate precision.</p>
-              </div>
-            </motion.div>
-
-            {/* Merch Tile */}
-            <motion.div 
-              className={`${styles.bentoTile} ${styles.tileTall}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className={styles.tileContent}>
-                <span className={styles.tileNumber}>03</span>
-                <h3>Custom Merch</h3>
-                <p>Wear the culture. We handle everything from design to high-quality print production for your brand.</p>
-                <div className={styles.merchPreview}>
-                  <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=300&q=80" alt="T-Shirt" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Art Tile */}
-            <motion.div 
-              className={`${styles.bentoTile} ${styles.tileSmall}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className={styles.tileContent}>
-                <span className={styles.tileNumber}>04</span>
-                <h3>Street Art</h3>
-                <p>Murals and physical installations.</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- RECENT WORK SHOWCASE (AGENCY PORTFOLIO) --- */}
-      <section className={styles.portfolioSection}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Recent Drops & Deployments</h2>
-            <p className={styles.sectionSubtitle}>A glimpse into our creative laboratory.</p>
-          </div>
-          
-          <div className={styles.portfolioGrid}>
-            {[
-              { title: "Neon Nights Brand Identity", tag: "Branding", img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&w=800&q=80" },
-              { title: "Urban Streetwear E-Commerce", tag: "Web Design", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80" },
-              { title: "Cyber Punk Festival", tag: "Posters & Merch", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" }
-            ].map((work, idx) => (
-              <motion.div 
-                key={idx}
-                className={styles.portfolioCard}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+          <div className={styles.filterPills}>
+            {serviceFilters.map((filter, index) => (
+              <button 
+                key={index}
+                className={`${styles.filterPill} ${activeFilter === filter ? styles.activeFilter : ''}`}
+                onClick={() => setActiveFilter(filter)}
               >
-                <div className={styles.portfolioImageWrapper}>
-                  <img src={work.img} alt={work.title} className={styles.portfolioImage} />
-                  <div className={styles.portfolioOverlay}>
-                    <span>View Project</span>
-                  </div>
-                </div>
-                <div className={styles.portfolioDetails}>
-                  <h4>{work.title}</h4>
-                  <span className={styles.portfolioTag}>{work.tag}</span>
-                </div>
-              </motion.div>
+                {filter}
+              </button>
             ))}
           </div>
+          
+          <motion.div 
+            className={styles.filteredContent}
+            key={activeFilter}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <p className={styles.dynamicServiceText}>Exploring our <span className={styles.highlightText}>{activeFilter}</span> services. We merge street-art aesthetics with premium execution.</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* --- SHOP CATEGORIES (E-COMMERCE) --- */}
-      <section className={styles.categoriesSection}>
-        <div className={`container ${styles.categoriesContainer}`}>
-          {[
-            { title: "Apparel", img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80" },
-            { title: "Street Art", img: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=600&q=80" },
-            { title: "Accessories", img: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=600&q=80" }
-          ].map((cat, idx) => (
-            <motion.div 
-              key={idx}
-              className={styles.categoryCard}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <img src={cat.img} alt={cat.title} />
-              <div className={styles.categoryOverlay}>
-                <h3>{cat.title}</h3>
-                <Link to={`/shop?category=${cat.title.toLowerCase()}`} className={styles.btnOutlineSmall}>Shop Now</Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- FEATURED PRODUCTS (E-COMMERCE) --- */}
-      <section className={styles.productsSection}>
-        <div className={`container ${styles.productsContainer}`}>
+      {/* --- TOP SERVICES SECTION --- */}
+      <section className={styles.topServicesSection}>
+        <div className={`container ${styles.topServicesContainer}`}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Featured Drops</h2>
-            <p className={styles.sectionSubtitle}>Exclusive merch and limited edition prints.</p>
+            <h2 className={styles.sectionTitle}>Top Services</h2>
+            <p className={styles.sectionSubtitle}>Our most requested creative deployments.</p>
           </div>
           
-          <div className={styles.productsGrid}>
-            {[
-              { id: 1, title: "Classic Logo Tee", price: "₹999", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" },
-              { id: 2, title: "Street Art Hoodie", price: "₹1999", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80" },
-              { id: 3, title: "Cyberpunk Poster", price: "₹499", img: "https://images.unsplash.com/photo-1583734551194-279326b014c2?auto=format&fit=crop&w=600&q=80" },
-              { id: 4, title: "Custom Snapback", price: "₹799", img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80" }
-            ].map((prod, idx) => (
+          <div className={styles.topServicesGrid}>
+            {topServices.map((service, index) => (
               <motion.div 
-                key={idx}
-                className={styles.productCard}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={index}
+                className={styles.topServiceCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ delay: index * 0.1 }}
               >
-                <Link to={`/product/${prod.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                  <div className={styles.productImageWrapper}>
-                    <img src={prod.img} alt={prod.title} className={styles.productImage} />
-                    <div className={styles.productOverlay}>
-                      <span className={styles.btnAddToCart}>View Details</span>
-                    </div>
-                  </div>
-                  <div className={styles.productDetails}>
-                    <h4 className={styles.productName}>{prod.title}</h4>
-                    <span className={styles.productPrice}>{prod.price}</span>
-                  </div>
-                </Link>
+                <div className={styles.serviceIcon}>{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+                <Link to="/contact" className={styles.btnStartProject}>Start Project</Link>
               </motion.div>
             ))}
           </div>
           
           <div className={styles.viewAllWrapper}>
-            <Link to="/shop" className={styles.btnOutline}>View Full Shop</Link>
+            <Link to="/services" className={styles.btnPrimary}>VIEW ALL SERVICES</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* --- BEST SELLING CATEGORIES --- */}
+      <section className={styles.bestSellingSection}>
+        <div className={`container ${styles.bestSellingContainer}`}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Best Selling</h2>
+            <p className={styles.sectionSubtitle}>Explore our top merch & art categories.</p>
+          </div>
+          
+          <div className={styles.bestSellingGrid}>
+            {bestSellingCategories.map((category, index) => (
+              <motion.div 
+                key={index}
+                className={styles.bestSellingCard}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <img src={category.img} alt={category.title} className={styles.bestSellingImage} />
+                <div className={styles.bestSellingOverlay}>
+                  <h3>{category.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FEATURED PRODUCTS CAROUSEL --- */}
+      <section className={styles.featuredProductsSection}>
+        <div className={`container ${styles.featuredProductsContainer}`}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Featured Products</h2>
+            <p className={styles.sectionSubtitle}>Exclusive drops and limited edition prints.</p>
+          </div>
+          
+          <div className={styles.productsCarousel}>
+            {featuredProducts.map((product) => (
+              <div key={product.id} className={styles.carouselProductCard}>
+                <div className={styles.carouselImageWrapper}>
+                  <img src={product.img} alt={product.title} />
+                  <button className={styles.wishlistBtn}><FaHeart /></button>
+                  <div className={styles.addToCartOverlay}>
+                    <button className={styles.btnAddToCartIcon}><FaShoppingCart /> Add to Cart</button>
+                  </div>
+                </div>
+                <div className={styles.carouselProductInfo}>
+                  <h4>{product.title}</h4>
+                  <span>{product.price}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

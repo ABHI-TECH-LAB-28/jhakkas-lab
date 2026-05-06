@@ -952,3 +952,311 @@
   }
 }
 
+
+
+/* --- NEW FILTER SECTION --- */
+.servicesFilterSection {
+  padding: 8rem 0;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filterPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.filterPill {
+  background-color: #111;
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.filterPill:hover {
+  background-color: #222;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filterPill.activeFilter {
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border-color: var(--color-yellow);
+}
+
+.filteredContent {
+  background: #0a0a0a;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dynamicServiceText {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-text);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.highlightText {
+  color: var(--color-yellow);
+  font-weight: 800;
+}
+
+/* --- NEW TOP SERVICES SECTION --- */
+.topServicesSection {
+  padding: 8rem 0;
+  background-color: #050505;
+}
+
+.topServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.topServiceCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  transition: all 0.4s var(--ease-custom);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.topServiceCard:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 214, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.serviceIcon {
+  font-size: 2.5rem;
+  color: var(--color-yellow);
+  margin-bottom: 0.5rem;
+}
+
+.topServiceCard h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.topServiceCard p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.btnStartProject {
+  margin-top: 1rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.topServiceCard:hover .btnStartProject {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+
+/* --- NEW BEST SELLING SECTION --- */
+.bestSellingSection {
+  padding: 8rem 0;
+  background-color: var(--color-bg);
+}
+
+.bestSellingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.bestSellingCard {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bestSellingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.bestSellingCard:hover .bestSellingImage {
+  transform: scale(1.05);
+}
+
+.bestSellingOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bestSellingOverlay h3 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.bestSellingCard:hover .bestSellingOverlay h3 {
+  transform: scale(1);
+  color: var(--color-yellow);
+}
+
+/* --- NEW FEATURED PRODUCTS CAROUSEL --- */
+.featuredProductsSection {
+  padding: 8rem 0;
+  background-color: #080808;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.productsCarousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.productsCarousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.carouselProductCard {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carouselImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.carouselImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.carouselImageWrapper:hover img {
+  transform: scale(1.05);
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.wishlistBtn:hover {
+  background: var(--color-yellow);
+  color: var(--color-bg);
+}
+
+.addToCartOverlay {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  transition: bottom 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.carouselImageWrapper:hover .addToCartOverlay {
+  bottom: 0;
+}
+
+.btnAddToCartIcon {
+  width: 100%;
+  background-color: var(--color-yellow);
+  color: var(--color-bg);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnAddToCartIcon:hover {
+  background-color: #fff;
+}
+
+.carouselProductInfo h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.carouselProductInfo span {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-yellow);
+}
