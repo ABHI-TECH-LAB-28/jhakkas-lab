@@ -213,3 +213,20 @@
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 214, 0, 0.2);
 }
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1.2rem;
+  }
+  .itemsContainer {
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+  .itemImage {
+    width: 70px;
+    height: 90px;
+  }
+  .footer {
+    padding: 1.2rem;
+  }
+}

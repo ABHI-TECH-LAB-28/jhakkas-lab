@@ -311,12 +311,22 @@
 
 @media (max-width: 480px) {
   .actions {
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
   .accountIcon {
     display: none; /* Hide account icon on very small screens */
   }
   .langSwitch {
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
+    padding: 2px 4px;
+    font-size: 0.65rem;
+  }
+  .logoImage {
+    height: 60px; /* Even smaller logo for mobile to prevent overlap */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .mobileToggle {
+    margin-left: 0.5rem;
   }
 }

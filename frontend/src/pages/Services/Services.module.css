@@ -673,6 +673,39 @@
   }
 }
 
+@media (max-width: 768px) {
+  .workGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 1.5rem;
+  }
+  .workCard {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 250px;
+  }
+  .odishaContent {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  .cityGrid {
+    justify-content: center;
+  }
+  .mapCircle {
+    width: 250px;
+    height: 250px;
+  }
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0 1rem;
+  }
+  .featuredPrice {
+    transform: none;
+  }
+}
+
 @media (max-width: 600px) {
   .processGrid {
     grid-template-columns: 1fr;

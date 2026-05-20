@@ -117,9 +117,11 @@ const Shop = () => {
                   </div>
                 ))
               ) : (
-                filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))
+                <div className={styles.sectionGrid}>
+                  {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
               )}
             </AnimatePresence>
           </motion.div>

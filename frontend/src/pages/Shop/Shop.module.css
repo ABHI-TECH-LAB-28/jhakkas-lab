@@ -430,10 +430,51 @@
 
 @media (max-width: 768px) {
   .shopHeader {
-    padding: 120px 0 40px;
+    padding: 140px 0 60px;
   }
-  .productGrid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  .shopControls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .searchAndSort {
+    flex-direction: column;
+    max-width: 100%;
     gap: 1.5rem;
+  }
+  .sectionGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+  .spotlightContent h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlightCard {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  .newPrice {
+    font-size: 2rem;
+  }
+  .spotlightBtn {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
+  }
+  .spotlightImage img {
+    max-height: 250px;
+  }
+  .spotlightPrice {
+    margin-bottom: 2rem;
   }
 }

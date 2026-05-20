@@ -132,5 +132,48 @@ export const products = [
     desc: "Meticulously detailed pencil portraits drawn from your favorite photos. A perfect gift for loved ones.",
     sizes: ['A4 Size', 'A3 Size', 'A2 Size'],
     colors: ['B&W']
+  },
+  // New Generated Products
+  { 
+    id: 20, 
+    title: "Street Art Portrait Mural", 
+    category: "drawing", 
+    price: 4999, 
+    originalPrice: 7999,
+    rating: 5.0,
+    reviews: 14,
+    img: "/images/street_art.png",
+    gallery: ["/images/street_art.png"],
+    desc: "Highly detailed, realistic street art mural of a vibrant, expressive portrait painting. Perfect for creative spaces.",
+    sizes: ['Medium Mural', 'Large Wall'],
+    colors: ['Vibrant']
+  },
+  { 
+    id: 21, 
+    title: "Premium Streetwear T-Shirt", 
+    category: "clothing", 
+    price: 1499, 
+    originalPrice: 2499,
+    rating: 4.9,
+    reviews: 32,
+    img: "/images/tshirt_design.png",
+    gallery: ["/images/tshirt_design.png"],
+    desc: "Realistic premium black streetwear t-shirt featuring a bold, edgy, urban graphic design.",
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Black']
+  },
+  { 
+    id: 22, 
+    title: "Modern Minimalist Logo", 
+    category: "logo", 
+    price: 1299, 
+    originalPrice: 2499,
+    rating: 4.8,
+    reviews: 55,
+    img: "/images/logo_mockup.png",
+    gallery: ["/images/logo_mockup.png"],
+    desc: "High-end, modern, minimal, and bold logo design embossed on premium textured material.",
+    sizes: ['Digital', 'Print Ready'],
+    colors: ['Black/White']
   }
 ];

@@ -292,6 +292,7 @@
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
 }
 
 .tableHeader {
@@ -510,5 +511,64 @@
 .emptyProjects p {
   color: var(--color-text-muted);
   font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .dashboardPage {
+    padding: 120px 0 60px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .navItem, .navItemActive {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .projectCard {
+    padding: 2rem 1.5rem;
+  }
+  .timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .timeline::before {
+    top: 0;
+    left: 6px;
+    width: 2px;
+    height: 100%;
+  }
+  .timelineStep {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .tableHeader, .orderRow {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .authCard {
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+  }
 }
 

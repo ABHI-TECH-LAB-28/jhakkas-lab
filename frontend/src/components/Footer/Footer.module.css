@@ -137,11 +137,17 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding-top: 3rem;
+  }
   .footerContainer {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
-  
+  .linksGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
   .bottomBar {
     flex-direction: column;
     text-align: center;
@@ -151,5 +157,9 @@
 @media (max-width: 576px) {
   .footerContainer {
     grid-template-columns: 1fr;
+  }
+  .linksGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
