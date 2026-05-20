@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import { FiInstagram, FiTwitter, FiFacebook, FiMessageCircle } from 'react-icons/fi';
+import { FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.css';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerContainer}`}>
@@ -16,42 +19,40 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className={styles.linksGrid}>
-          <div className={styles.linksColumn}>
-            <h3 className={styles.heading}>Services</h3>
-            <ul>
-              <li><Link to="/services">Website Design</Link></li>
-              <li><Link to="/services">Logo Branding</Link></li>
-              <li><Link to="/services">Guitar Painting</Link></li>
-              <li><Link to="/services">Murals & Art</Link></li>
-            </ul>
-          </div>
+        <div className={styles.linksColumn}>
+          <h3 className={styles.heading}>{t('services')}</h3>
+          <ul>
+            <li><Link to="/services">{t('websiteDesign')}</Link></li>
+            <li><Link to="/services">{t('logoBranding')}</Link></li>
+            <li><Link to="/services">{t('guitarPainting')}</Link></li>
+            <li><Link to="/services">{t('muralsArt')}</Link></li>
+          </ul>
+        </div>
 
-          <div className={styles.linksColumn}>
-            <h3 className={styles.heading}>Shop</h3>
-            <ul>
-              <li><Link to="/shop">New Drops</Link></li>
-              <li><Link to="/shop">Digital Assets</Link></li>
-              <li><Link to="/shop">Custom Gear</Link></li>
-              <li><Link to="/shop">Accessories</Link></li>
-            </ul>
-          </div>
+        <div className={styles.linksColumn}>
+          <h3 className={styles.heading}>{t('shop')}</h3>
+          <ul>
+            <li><Link to="/shop">{t('newDrops')}</Link></li>
+            <li><Link to="/shop">{t('digitalAssets')}</Link></li>
+            <li><Link to="/shop">{t('customGear')}</Link></li>
+            <li><Link to="/shop">{t('accessories')}</Link></li>
+          </ul>
+        </div>
 
-          <div className={styles.linksColumn}>
-            <h3 className={styles.heading}>Support</h3>
-            <ul>
-              <li><Link to="/about">Our Story</Link></li>
-              <li><Link to="/contact">Get in Touch</Link></li>
-              <li><Link to="/custom-order">Custom Inquiry</Link></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-          </div>
+        <div className={styles.linksColumn}>
+          <h3 className={styles.heading}>{t('support')}</h3>
+          <ul>
+            <li><Link to="/about">{t('ourStory')}</Link></li>
+            <li><Link to="/contact">{t('getInTouch')}</Link></li>
+            <li><Link to="/custom-order">{t('customInquiry')}</Link></li>
+            <li><a href="#">{t('faq')}</a></li>
+          </ul>
+        </div>
 
-          <div className={styles.contactSection}>
-            <h3 className={styles.heading}>Visit Us</h3>
-            <p>Bhubaneswar, Odisha</p>
-            <p>hello@jhakkaslab.com</p>
-          </div>
+        <div className={styles.contactSection}>
+          <h3 className={styles.heading}>{t('visitUs')}</h3>
+          <p>Bhubaneswar, Odisha</p>
+          <p>hello@jhakkaslab.com</p>
         </div>
       </div>
       <div className={styles.bottomBar}>

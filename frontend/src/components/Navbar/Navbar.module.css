@@ -294,7 +294,9 @@
     display: none;
   }
   .mobileToggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .searchBar {
     display: none; /* Hide search bar on mobile to save space */
@@ -312,9 +314,12 @@
 @media (max-width: 480px) {
   .actions {
     gap: 0.5rem;
+    align-items: center;
   }
   .accountIcon {
-    display: none; /* Hide account icon on very small screens */
+    display: flex;
+    align-items: center;
+    margin-left: 0.2rem;
   }
   .langSwitch {
     margin-right: 0.2rem;

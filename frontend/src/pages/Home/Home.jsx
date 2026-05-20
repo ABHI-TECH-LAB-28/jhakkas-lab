@@ -2,10 +2,14 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPenNib, FaTshirt, FaLaptopCode, FaImage, FaVideo, FaPrint, FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../../context/CartContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Home.module.css';
 
 const Home = () => {
   const containerRef = useRef(null);
+  const { addToCart } = useCart();
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('Design');
   
   const serviceFilters = ['Design', 'Printing', 'Art', 'Gifts', 'Decor', 'Website', 'Marketing', 'Custom Orders'];
@@ -20,12 +24,12 @@ const Home = () => {
   ];
 
   const featuredProducts = [
-    { id: 1, title: 'Oversized Graphic T-Shirt', price: '₹1499', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80' },
-    { id: 2, title: 'Anime Stickers Pack', price: '₹299', img: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&w=600&q=80' },
-    { id: 3, title: 'Custom Portrait Frame', price: '₹1999', img: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80' },
-    { id: 4, title: 'Handmade Scrap Decor', price: '₹899', img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=600&q=80' },
-    { id: 5, title: 'Personalized Gift Box', price: '₹2499', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' },
-    { id: 6, title: 'Cyberpunk Wall Poster', price: '₹499', img: 'https://images.unsplash.com/photo-1583734551194-279326b014c2?auto=format&fit=crop&w=600&q=80' }
+    { id: 1, title: 'Oversized Graphic T-Shirt', price: 1499, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80', category: 'clothing' },
+    { id: 2, title: 'Anime Stickers Pack', price: 299, img: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&w=600&q=80', category: 'stickers' },
+    { id: 3, title: 'Custom Portrait Frame', price: 1999, img: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80', category: 'drawing' },
+    { id: 4, title: 'Handmade Scrap Decor', price: 899, img: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=600&q=80', category: 'decor' },
+    { id: 5, title: 'Personalized Gift Box', price: 2499, img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80', category: 'gifts' },
+    { id: 6, title: 'Cyberpunk Wall Poster', price: 499, img: 'https://images.unsplash.com/photo-1583734551194-279326b014c2?auto=format&fit=crop&w=600&q=80', category: 'posters' }
   ];
 
   const bestSellingCategories = [
@@ -43,7 +47,6 @@ const Home = () => {
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   
   // Parallax elements for background
   const yBrush1 = useTransform(scrollYProgress, [0, 1], [0, -300]);
@@ -94,18 +97,18 @@ const Home = () => {
           className={styles.heroTextContainer}
           style={{ y: y1 }}
         >
-          <h1 className={styles.heroTitle} data-text="WE BUILD CULTURE">
-            WE BUILD<br/>
-            <span className={styles.accentText}>CULTURE</span>
+          <h1 className={styles.heroTitle} data-text={`${t('heroTitleLine1')} ${t('heroTitleLine2')}`}>
+            {t('heroTitleLine1')}<br/>
+            <span className={styles.accentText}>{t('heroTitleLine2')}</span>
           </h1>
           
           <div className={styles.heroBottom}>
             <p className={styles.heroDescription}>
-              We merge street-art aesthetics with premium digital design. Elevating brands through bold identities, immersive websites, and custom merchandise.
+              {t('heroDescription')}
             </p>
             <div className={styles.heroCtas}>
-              <Link to="/services" className={styles.btnPrimary}>OUR ARSENAL</Link>
-              <Link to="/contact" className={styles.btnOutline}>START A PROJECT</Link>
+              <Link to="/services" className={styles.btnPrimary}>{t('ourArsenal')}</Link>
+              <Link to="/contact" className={styles.btnOutline}>{t('startAProject')}</Link>
             </div>
           </div>
         </motion.div>
@@ -151,12 +154,83 @@ const Home = () => {
         </div>
       </section>
 
-            {/* --- WHAT WE DO (SERVICE FILTERS) --- */}
+      {/* --- BEST SELLING CATEGORIES --- */}
+      <section className={styles.bestSellingSection}>
+        <div className={`container ${styles.bestSellingContainer}`}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>{t('bestSelling')}</h2>
+            <p className={styles.sectionSubtitle}>{t('bestSellingSub')}</p>
+          </div>
+          
+          <div className={styles.bestSellingGrid}>
+            {bestSellingCategories.map((category, index) => (
+              <motion.div 
+                key={index}
+                className={styles.bestSellingCard}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <img src={category.img} alt={category.title} className={styles.bestSellingImage} />
+                <div className={styles.bestSellingOverlay}>
+                  <h3>{category.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FEATURED PRODUCTS CAROUSEL --- */}
+      <section className={styles.featuredProductsSection}>
+        <div className={`container ${styles.featuredProductsContainer}`}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>{t('featuredProducts')}</h2>
+            <p className={styles.sectionSubtitle}>{t('featuredProductsSub')}</p>
+          </div>
+          
+          <div className={styles.productsCarousel}>
+            {featuredProducts.map((product) => (
+              <div key={product.id} className={styles.carouselProductCard}>
+                <div className={styles.carouselImageWrapper}>
+                  <Link to={`/product/${product.id}`}>
+                    <img src={product.img} alt={product.title} />
+                  </Link>
+                  <button className={styles.wishlistBtn}><FaHeart /></button>
+                  <div className={styles.addToCartOverlay}>
+                    <button 
+                      className={styles.btnAddToCartIcon}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const defaultSize = product.category === 'clothing' ? 'M' : 'Standard';
+                        addToCart(product, defaultSize);
+                        alert(`${product.title} added to cart!`);
+                      }}
+                    >
+                      <FaShoppingCart /> {t('addToCart')}
+                    </button>
+                  </div>
+                </div>
+                <div className={styles.carouselProductInfo}>
+                  <Link to={`/product/${product.id}`}>
+                    <h4>{product.title}</h4>
+                  </Link>
+                  <span>₹{product.price}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT WE DO (SERVICE FILTERS) --- */}
       <section className={styles.servicesFilterSection}>
         <div className={`container ${styles.servicesFilterContainer}`}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>What We Do</h2>
-            <p className={styles.sectionSubtitle}>Creative services made to look Jhakkas 🔥</p>
+            <h2 className={styles.sectionTitle}>{t('whatWeDo')}</h2>
+            <p className={styles.sectionSubtitle}>{t('creativeServices')}</p>
           </div>
           
           <div className={styles.filterPills}>
@@ -187,8 +261,8 @@ const Home = () => {
       <section className={styles.topServicesSection}>
         <div className={`container ${styles.topServicesContainer}`}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Top Services</h2>
-            <p className={styles.sectionSubtitle}>Our most requested creative deployments.</p>
+            <h2 className={styles.sectionTitle}>{t('topServices')}</h2>
+            <p className={styles.sectionSubtitle}>{t('mostRequested')}</p>
           </div>
           
           <div className={styles.topServicesGrid}>
@@ -204,69 +278,13 @@ const Home = () => {
                 <div className={styles.serviceIcon}>{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.desc}</p>
-                <Link to="/contact" className={styles.btnStartProject}>Start Project</Link>
+                <Link to="/contact" className={styles.btnStartProject}>{t('startProject')}</Link>
               </motion.div>
             ))}
           </div>
           
           <div className={styles.viewAllWrapper}>
-            <Link to="/services" className={styles.btnPrimary}>VIEW ALL SERVICES</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* --- BEST SELLING CATEGORIES --- */}
-      <section className={styles.bestSellingSection}>
-        <div className={`container ${styles.bestSellingContainer}`}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Best Selling</h2>
-            <p className={styles.sectionSubtitle}>Explore our top merch & art categories.</p>
-          </div>
-          
-          <div className={styles.bestSellingGrid}>
-            {bestSellingCategories.map((category, index) => (
-              <motion.div 
-                key={index}
-                className={styles.bestSellingCard}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <img src={category.img} alt={category.title} className={styles.bestSellingImage} />
-                <div className={styles.bestSellingOverlay}>
-                  <h3>{category.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- FEATURED PRODUCTS CAROUSEL --- */}
-      <section className={styles.featuredProductsSection}>
-        <div className={`container ${styles.featuredProductsContainer}`}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Featured Products</h2>
-            <p className={styles.sectionSubtitle}>Exclusive drops and limited edition prints.</p>
-          </div>
-          
-          <div className={styles.productsCarousel}>
-            {featuredProducts.map((product) => (
-              <div key={product.id} className={styles.carouselProductCard}>
-                <div className={styles.carouselImageWrapper}>
-                  <img src={product.img} alt={product.title} />
-                  <button className={styles.wishlistBtn}><FaHeart /></button>
-                  <div className={styles.addToCartOverlay}>
-                    <button className={styles.btnAddToCartIcon}><FaShoppingCart /> Add to Cart</button>
-                  </div>
-                </div>
-                <div className={styles.carouselProductInfo}>
-                  <h4>{product.title}</h4>
-                  <span>{product.price}</span>
-                </div>
-              </div>
-            ))}
+            <Link to="/services" className={styles.btnPrimary}>{t('viewAllServices')}</Link>
           </div>
         </div>
       </section>
@@ -275,14 +293,14 @@ const Home = () => {
       <section className={styles.processSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>How It Works</h2>
-            <p className={styles.sectionSubtitle}>From idea to reality in three simple steps.</p>
+            <h2 className={styles.sectionTitle}>{t('howItWorks')}</h2>
+            <p className={styles.sectionSubtitle}>{t('howItWorksSub')}</p>
           </div>
           <div className={styles.processGrid}>
             {[
-              { step: '01', title: 'Drop the Idea', desc: 'Tell us your vision. We take custom orders for digital design or physical merch.' },
-              { step: '02', title: 'We Cook', desc: 'Our creative team gets to work, crafting premium, street-art inspired designs.' },
-              { step: '03', title: 'Jhakkas Delivery', desc: 'We launch your site or ship your custom gear straight to your door.' }
+              { step: '01', title: t('step1Title'), desc: t('step1Desc') },
+              { step: '02', title: t('step2Title'), desc: t('step2Desc') },
+              { step: '03', title: t('step3Title'), desc: t('step3Desc') }
             ].map((item, i) => (
               <motion.div 
                 key={i} 
@@ -305,8 +323,8 @@ const Home = () => {
       <section className={styles.testimonialsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Word on the Street</h2>
-            <p className={styles.sectionSubtitle}>Don't just take our word for it.</p>
+            <h2 className={styles.sectionTitle}>{t('wordOnStreet')}</h2>
+            <p className={styles.sectionSubtitle}>{t('dontTakeOurWord')}</p>
           </div>
           <div className={styles.testimonialsGrid}>
             {[
@@ -338,8 +356,8 @@ const Home = () => {
       <section className={styles.faqSection}>
         <div className={`container ${styles.faqContainer}`}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Got Questions?</h2>
-            <p className={styles.sectionSubtitle}>We've got answers.</p>
+            <h2 className={styles.sectionTitle}>{t('gotQuestions')}</h2>
+            <p className={styles.sectionSubtitle}>{t('weGotAnswers')}</p>
           </div>
           <div className={styles.faqList}>
             {[
@@ -363,11 +381,11 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2>Stay in the Loop</h2>
-            <p>Subscribe for exclusive drops, secret discounts, and creative inspiration. No spam, ever.</p>
+            <h2>{t('stayInLoop')}</h2>
+            <p>{t('newsletterSub')}</p>
             <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email address" required />
-              <button type="submit" className={styles.btnPrimary}>Subscribe</button>
+              <input type="email" placeholder={t('emailPlaceholder')} required />
+              <button type="submit" className={styles.btnPrimary}>{t('subscribe')}</button>
             </form>
           </motion.div>
         </div>

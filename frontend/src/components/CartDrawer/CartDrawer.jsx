@@ -3,11 +3,13 @@ import { FiX, FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './CartDrawer.module.css';
 
 const CartDrawer = ({ isOpen, onClose }) => {
   const { cartItems, removeFromCart, updateQuantity, getCartTotal, getCartCount } = useCart();
   const { isAuthenticated } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const subtotal = getCartTotal();
 
@@ -43,7 +45,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           >
             <div className={styles.header}>
-              <h2>Your Cart <span className={styles.count}>({getCartCount()})</span></h2>
+              <h2>{t('yourCart')} <span className={styles.count}>({getCartCount()})</span></h2>
               <button className={styles.closeBtn} onClick={onClose}>
                 <FiX size={24} />
               </button>
@@ -52,14 +54,14 @@ const CartDrawer = ({ isOpen, onClose }) => {
             <div className={styles.itemsContainer}>
               {cartItems.length === 0 ? (
                 <div className={styles.emptyCart}>
-                  <p>Your cart is empty.</p>
+                  <p>{t('emptyCart')}</p>
                 </div>
               ) : (
                 cartItems.map((item) => (
                   <div key={`${item.id}-${item.size}`} className={styles.cartItem}>
-                    <img src={item.img} alt={item.name} className={styles.itemImage} />
+                    <img src={item.img} alt={item.title} className={styles.itemImage} />
                     <div className={styles.itemDetails}>
-                      <h4 className={styles.itemName}>{item.name}</h4>
+                      <h4 className={styles.itemName}>{item.title}</h4>
                       {item.size && <span className={styles.itemSize}>Size: {item.size}</span>}
                       <span className={styles.itemPrice}>₹{item.price}</span>
                       
@@ -88,7 +90,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
             <div className={styles.footer}>
               <div className={styles.subtotalRow}>
-                <span>Subtotal</span>
+                <span>{t('subtotal')}</span>
                 <span className={styles.subtotalValue}>₹{subtotal}</span>
               </div>
               <p className={styles.taxesInfo}>Taxes and shipping calculated at checkout.</p>
@@ -104,7 +106,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                 onClick={handleCheckout}
                 disabled={cartItems.length === 0}
               >
-                {isAuthenticated ? 'CHECKOUT' : 'LOGIN TO CHECKOUT'}
+                {isAuthenticated ? t('checkout') : t('loginToCheckout')}
               </button>
             </div>
           </motion.div>

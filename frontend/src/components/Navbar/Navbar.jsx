@@ -4,14 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 import CartDrawer from '../CartDrawer/CartDrawer';
 import { useCart } from '../../context/CartContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const { getCartCount } = useCart();
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [lang, setLang] = useState('EN');
   const [showBackToTop, setShowBackToTop] = useState(false);
   const location = useLocation();
 
@@ -31,11 +32,22 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Custom Order', path: '/custom-order' },
+    { name: t('home'), path: '/' },
+    { name: t('services'), path: '/services' },
+    { name: t('shop'), path: '/shop' },
+    { name: t('portfolio'), path: '/portfolio' },
+    { name: t('customOrder'), path: '/custom-order' },
+  ];
+
+  const mobileLinks = [
+    { name: t('home'), path: '/' },
+    { name: t('services'), path: '/services' },
+    { name: t('shop'), path: '/shop' },
+    { name: t('portfolio'), path: '/portfolio' },
+    { name: t('customOrder'), path: '/custom-order' },
+    { name: t('about'), path: '/about' },
+    { name: t('contact'), path: '/contact' },
+    { name: t('profile'), path: '/account' }
   ];
 
   return (
@@ -49,7 +61,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className={styles.desktopMenu}>
           {navLinks.map((link) => (
-            <li key={link.name}>
+            <li key={link.path}>
               <Link
                 to={link.path}
                 className={`${styles.navLink} ${location.pathname === link.path ? styles.active : ''}`}
@@ -64,14 +76,14 @@ const Navbar = () => {
           {/* Language Switcher */}
           <button 
             className={styles.langSwitch}
-            onClick={() => setLang(lang === 'EN' ? 'ଓଡ଼ି' : 'EN')}
+            onClick={() => setLanguage(language === 'EN' ? 'OR' : 'EN')}
           >
-            {lang}
+            {language === 'EN' ? 'ଓଡ଼ିଆ' : 'EN'}
           </button>
 
           <div className={styles.searchBar}>
             <FiSearch className={styles.searchIcon} />
-            <input type="text" placeholder="Search products..." className={styles.searchInput} />
+            <input type="text" placeholder={t('searchPlaceholder')} className={styles.searchInput} />
           </div>
 
           <button className={styles.cartIcon} onClick={() => setIsCartOpen(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
@@ -120,12 +132,12 @@ const Navbar = () => {
               <FiX size={36} />
             </button>
             <div className={styles.mobileNavLinks}>
-              {[{name: 'Home', path: '/'}, ...navLinks, {name: 'About', path: '/about'}, {name: 'Contact', path: '/contact'}].map((link, i) => (
+              {mobileLinks.map((link, i) => (
                 <motion.div 
                   key={link.name}
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 + i * 0.1 }}
+                  transition={{ delay: 0.2 + i * 0.05 }}
                 >
                   <Link
                     to={link.path}
