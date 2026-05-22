@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
+import { FiMenu, FiX, FiShoppingCart, FiUser } from 'react-icons/fi';
 import CartDrawer from '../CartDrawer/CartDrawer';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
+import Logo from './Logo';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -32,22 +33,13 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: t('home'), path: '/' },
-    { name: t('services'), path: '/services' },
-    { name: t('shop'), path: '/shop' },
-    { name: t('portfolio'), path: '/portfolio' },
-    { name: t('customOrder'), path: '/custom-order' },
-  ];
-
-  const mobileLinks = [
-    { name: t('home'), path: '/' },
-    { name: t('services'), path: '/services' },
-    { name: t('shop'), path: '/shop' },
-    { name: t('portfolio'), path: '/portfolio' },
-    { name: t('customOrder'), path: '/custom-order' },
-    { name: t('about'), path: '/about' },
-    { name: t('contact'), path: '/contact' },
-    { name: t('profile'), path: '/account' }
+    { name: 'HOME', path: '/' },
+    { name: 'SERVICES', path: '/services' },
+    { name: 'PRODUCTS', path: '/shop' },
+    { name: 'PORTFOLIO', path: '/portfolio' },
+    { name: 'PRICING', path: '/custom-order' },
+    { name: 'ABOUT US', path: '/about' },
+    { name: 'CONTACT US', path: '/contact' },
   ];
 
   return (
@@ -55,13 +47,13 @@ const Navbar = () => {
       <div className={`container ${styles.navContainer}`}>
         
         <Link to="/" className={styles.logoWrapper}>
-          <img src="/logo.svg" alt="Jhakkas Lab Logo" className={styles.logoImage} />
+          <Logo className={styles.logoSvg} />
         </Link>
-
+        
         {/* Desktop Menu */}
         <ul className={styles.desktopMenu}>
           {navLinks.map((link) => (
-            <li key={link.path}>
+            <li key={link.name}>
               <Link
                 to={link.path}
                 className={`${styles.navLink} ${location.pathname === link.path ? styles.active : ''}`}
@@ -73,7 +65,7 @@ const Navbar = () => {
         </ul>
 
         <div className={styles.actions}>
-          {/* Language Switcher */}
+          {/* Subtle Language Toggle */}
           <button 
             className={styles.langSwitch}
             onClick={() => setLanguage(language === 'EN' ? 'OR' : 'EN')}
@@ -81,24 +73,24 @@ const Navbar = () => {
             {language === 'EN' ? 'ଓଡ଼ିଆ' : 'EN'}
           </button>
 
-          <div className={styles.searchBar}>
-            <FiSearch className={styles.searchIcon} />
-            <input type="text" placeholder={t('searchPlaceholder')} className={styles.searchInput} />
-          </div>
-
-          <button className={styles.cartIcon} onClick={() => setIsCartOpen(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-            <FiShoppingCart size={24} />
-            {getCartCount() > 0 && (
-              <span className={styles.cartBadge}>{getCartCount()}</span>
-            )}
+          {/* Cart Icon */}
+          <button className={styles.cartIcon} onClick={() => setIsCartOpen(true)}>
+            <FiShoppingCart size={20} />
+            <span className={styles.cartBadge}>{getCartCount()}</span>
           </button>
 
+          {/* Profile Icon */}
           <Link to="/account" className={styles.accountIcon}>
-            <FiUser size={24} />
+            <FiUser size={20} />
+          </Link>
+
+          {/* ORDER NOW Button */}
+          <Link to="/custom-order" className={styles.orderNowBtn}>
+            ORDER NOW <span className={styles.btnArrow}>→</span>
           </Link>
           
           <button className={styles.mobileToggle} onClick={toggleMenu}>
-            <FiMenu size={28} />
+            <FiMenu size={24} />
           </button>
         </div>
       </div>
@@ -129,10 +121,10 @@ const Navbar = () => {
             className={styles.mobileMenu}
           >
             <button className={styles.closeToggle} onClick={toggleMenu}>
-              <FiX size={36} />
+              <FiX size={32} />
             </button>
             <div className={styles.mobileNavLinks}>
-              {mobileLinks.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.div 
                   key={link.name}
                   initial={{ y: 50, opacity: 0 }}
@@ -148,6 +140,16 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 + navLinks.length * 0.05 }}
+                className={styles.mobileActions}
+              >
+                <Link to="/custom-order" className={styles.orderNowBtn} onClick={() => setIsOpen(false)}>
+                  ORDER NOW
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

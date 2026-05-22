@@ -1,67 +1,100 @@
 import { Link } from 'react-router-dom';
-import { FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
+import { FiInstagram, FiFacebook, FiYoutube, FiMessageSquare, FiSend } from 'react-icons/fi';
 import { useLanguage } from '../../context/LanguageContext';
+import Logo from '../Navbar/Logo';
 import styles from './Footer.module.css';
 
 const Footer = () => {
   const { t } = useLanguage();
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    alert('Thank you for subscribing to our newsletter!');
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerContainer}`}>
+        
+        {/* 1. Brand Section */}
         <div className={styles.brandSection}>
-          <img src="/footer-logo.png" alt="Jhakkas Lab" className={styles.footerLogo} />
-          <p className={styles.tagline}>Banega Jhakkas</p>
+          <div className={styles.logoWrapper}>
+            <Logo className={styles.footerLogo} />
+          </div>
+          <p className={styles.tagline}>
+            We are a creative studio offering design, printing, custom art and unique products that make you stand out.
+          </p>
           <div className={styles.socialLinks}>
-            <a href="#" className={styles.socialIcon}><FiInstagram size={24} /></a>
-            <a href="#" className={styles.socialIcon}><FiTwitter size={24} /></a>
-            <a href="#" className={styles.socialIcon}><FiFacebook size={24} /></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram"><FiInstagram size={18} /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Facebook"><FiFacebook size={18} /></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Youtube"><FiYoutube size={18} /></a>
+            <a href="https://wa.me/919827850842" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="WhatsApp"><FiMessageSquare size={18} /></a>
           </div>
         </div>
 
+        {/* 2. Quick Links Column */}
         <div className={styles.linksColumn}>
-          <h3 className={styles.heading}>{t('services')}</h3>
+          <h3 className={styles.heading}>{t('quickLinks')}</h3>
           <ul>
-            <li><Link to="/services">{t('websiteDesign')}</Link></li>
-            <li><Link to="/services">{t('logoBranding')}</Link></li>
-            <li><Link to="/services">{t('guitarPainting')}</Link></li>
-            <li><Link to="/services">{t('muralsArt')}</Link></li>
+            <li><Link to="/">{t('home')}</Link></li>
+            <li><Link to="/services">{t('services')}</Link></li>
+            <li><Link to="/shop">{t('products')}</Link></li>
+            <li><Link to="/portfolio">{t('portfolio')}</Link></li>
+            <li><Link to="/custom-order">{t('pricing')}</Link></li>
           </ul>
         </div>
 
+        {/* 3. Company Column */}
         <div className={styles.linksColumn}>
-          <h3 className={styles.heading}>{t('shop')}</h3>
+          <h3 className={styles.heading}>{t('company')}</h3>
           <ul>
-            <li><Link to="/shop">{t('newDrops')}</Link></li>
-            <li><Link to="/shop">{t('digitalAssets')}</Link></li>
-            <li><Link to="/shop">{t('customGear')}</Link></li>
-            <li><Link to="/shop">{t('accessories')}</Link></li>
+            <li><Link to="/about">{t('aboutUs')}</Link></li>
+            <li><Link to="/about#process">{t('ourProcess')}</Link></li>
+            <li><Link to="/about#faq">{t('faq')}</Link></li>
+            <li><a href="#blog">{t('blog')}</a></li>
+            <li><a href="#careers">{t('careers')}</a></li>
           </ul>
         </div>
 
+        {/* 4. Help Column */}
         <div className={styles.linksColumn}>
-          <h3 className={styles.heading}>{t('support')}</h3>
+          <h3 className={styles.heading}>{t('help')}</h3>
           <ul>
-            <li><Link to="/about">{t('ourStory')}</Link></li>
-            <li><Link to="/contact">{t('getInTouch')}</Link></li>
-            <li><Link to="/custom-order">{t('customInquiry')}</Link></li>
-            <li><a href="#">{t('faq')}</a></li>
+            <li><Link to="/contact">{t('contactUs')}</Link></li>
+            <li><Link to="/profile#orders">{t('trackOrder')}</Link></li>
+            <li><a href="#shipping">{t('shippingInfo')}</a></li>
+            <li><a href="#returns">{t('returnsRefunds')}</a></li>
+            <li><a href="#terms">{t('termsConditions')}</a></li>
           </ul>
         </div>
 
-        <div className={styles.contactSection}>
-          <h3 className={styles.heading}>{t('visitUs')}</h3>
-          <p>Bhubaneswar, Odisha</p>
-          <p>hello@jhakkaslab.com</p>
+        {/* 5. Newsletter Column */}
+        <div className={styles.newsletterSection}>
+          <h3 className={styles.heading}>{t('newsletter')}</h3>
+          <p className={styles.newsletterDesc}>
+            Subscribe to get updates on our latest products, offers and creative tips.
+          </p>
+          <form onSubmit={handleSubscribe} className={styles.newsletterForm}>
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className={styles.newsletterInput}
+              required
+            />
+            <button type="submit" className={styles.newsletterSubmitBtn} aria-label="Subscribe">
+              <FiSend />
+            </button>
+          </form>
         </div>
+
       </div>
+
       <div className={styles.bottomBar}>
-        <p>&copy; {new Date().getFullYear()} Jhakkas Lab. All rights reserved.</p>
-        <div className={styles.trustBadges}>
-          <span>100% Secure Checkout</span>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/200px-UPI-Logo-vector.svg.png" alt="UPI" />
+        <div className={`container ${styles.bottomBarContainer}`}>
+          <p className={styles.copyright}>&copy; 2024 - {new Date().getFullYear()} Jhakkas Lab. All Rights Reserved.</p>
+          <p className={styles.madeIn}>
+            Made with <span className={styles.heart}>❤️</span> in Odisha
+          </p>
         </div>
       </div>
     </footer>

@@ -1,14 +1,14 @@
 .footer {
-  background-color: #080808;
-  padding-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: #0B0B0C;
+  padding-top: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footerContainer {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
   gap: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 /* Brand Column */
@@ -17,17 +17,22 @@
   flex-direction: column;
 }
 
+.logoWrapper {
+  margin-left: -20px; /* offset the circle in custom logo SVG for alignment */
+  margin-bottom: 0.5rem;
+}
+
 .footerLogo {
-  width: 160px;
+  max-width: 200px;
   height: auto;
-  margin-bottom: 1rem;
-  display: block;
 }
 
 .tagline {
   color: var(--color-text-muted);
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .socialLinks {
@@ -37,33 +42,25 @@
 
 .socialIcon {
   color: var(--color-text-muted);
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .socialIcon:hover {
   color: var(--color-yellow);
   border-color: var(--color-yellow);
   background: rgba(255, 214, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Links Columns */
-.linksColumn h3 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-text);
-  margin-bottom: 1.2rem;
-}
-
 .linksColumn ul {
   list-style: none;
   padding: 0;
@@ -71,87 +68,121 @@
 }
 
 .linksColumn li {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
 }
 
 .linksColumn a {
   color: var(--color-text-muted);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   transition: color 0.2s ease;
   line-height: 1.5;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .linksColumn a:hover {
   color: var(--color-yellow);
 }
 
-/* Contact Column */
-.contactSection h3 {
-  font-size: 0.85rem;
+/* Heading Helper */
+.heading {
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--color-text);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.contactSection p {
+/* Newsletter Column */
+.newsletterSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletterDesc {
   color: var(--color-text-muted);
   font-size: 0.88rem;
-  margin-bottom: 0.5rem;
   line-height: 1.6;
+  margin-bottom: 1.25rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Heading helper (used for shared style) */
-.heading {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.newsletterForm {
+  display: flex;
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.newsletterForm:focus-within {
+  border-color: var(--color-yellow);
+}
+
+.newsletterInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
   color: var(--color-text);
-  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.newsletterInput::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.newsletterSubmitBtn {
+  background: var(--color-yellow);
+  color: #000;
+  border: none;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.newsletterSubmitBtn:hover {
+  background: #e0bc00;
 }
 
 /* Bottom Bar */
 .bottomBar {
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #09090A;
+}
+
+.bottomBarContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.bottomBar p {
+.copyright {
   color: var(--color-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.trustBadges {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.trustBadges span {
-  font-size: 0.75rem;
+.madeIn {
   color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.trustBadges img {
-  height: 18px;
-  opacity: 0.4;
-  filter: grayscale(100%);
-  transition: all 0.3s ease;
-}
-
-.trustBadges img:hover {
-  opacity: 1;
-  filter: none;
+.heart {
+  color: #ff3366;
 }
 
 /* ===========================
@@ -160,17 +191,19 @@
 
 @media (max-width: 1024px) {
   .footerContainer {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
     gap: 2rem;
   }
-  .brandSection {
+  .newsletterSection {
     grid-column: 1 / -1;
+    max-width: 480px;
+    margin-top: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding-top: 2.5rem;
+    padding-top: 3rem;
   }
   .footerContainer {
     grid-template-columns: repeat(2, 1fr);
@@ -178,32 +211,28 @@
   }
   .brandSection {
     grid-column: 1 / -1;
+    margin-bottom: 1rem;
   }
-  .bottomBar {
+  .newsletterSection {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+  .bottomBarContainer {
     flex-direction: column;
     text-align: center;
     align-items: center;
-  }
-  .trustBadges {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .footerContainer {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .brandSection {
-    grid-column: 1 / -1;
+  .logoWrapper {
+    margin-left: 0;
   }
   .footerLogo {
-    width: 120px;
-  }
-  .linksColumn h3,
-  .contactSection h3,
-  .heading {
-    font-size: 0.8rem;
+    max-width: 160px;
   }
 }

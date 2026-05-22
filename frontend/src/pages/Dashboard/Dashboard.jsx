@@ -22,14 +22,41 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Helper to safely parse JSON from a response
+    const safeParse = async (response) => {
+      try {
+        const text = await response.text();
+        return text ? JSON.parse(text) : null;
+      } catch {
+        return null;
+      }
+    };
+
     if (isAuthenticated && user?.token) {
+      // If user is local/mock, don't even try to hit the backend
+      if (user.isLocal) {
+        setDbOrders(orders);
+        setDbProjects([]);
+        setOrdersLoading(false);
+        setProjectsLoading(false);
+        return;
+      }
+
       const fetchOrders = async () => {
         try {
           const res = await fetch('/api/orders/myorders', {
             headers: { Authorization: `Bearer ${user.token}` },
           });
-          const data = await res.json();
-          setDbOrders(data.length > 0 ? data : orders);
+          if (res.ok) {
+            const data = await safeParse(res);
+            if (data && Array.isArray(data)) {
+              setDbOrders(data.length > 0 ? data : orders);
+            } else {
+              setDbOrders(orders);
+            }
+          } else {
+            setDbOrders(orders);
+          }
         } catch (err) {
           console.error('Error fetching orders:', err);
           setDbOrders(orders);
@@ -43,8 +70,12 @@ const Dashboard = () => {
           const res = await fetch('/api/custom-orders/myprojects', {
             headers: { Authorization: `Bearer ${user.token}` },
           });
-          const data = await res.json();
-          setDbProjects(data);
+          if (res.ok) {
+            const data = await safeParse(res);
+            if (data && Array.isArray(data)) {
+              setDbProjects(data);
+            }
+          }
         } catch (err) {
           console.error('Error fetching projects:', err);
         } finally {
@@ -56,6 +87,7 @@ const Dashboard = () => {
       fetchProjects();
     }
   }, [isAuthenticated, user]);
+
 
   const handleLogout = () => {
     logout();
@@ -160,6 +192,29 @@ const Dashboard = () => {
           </motion.div>
           <button className={styles.logoutBtn} onClick={handleLogout}>Logout</button>
         </header>
+
+        {/* Quick Stats Cards */}
+        <div className={styles.statsRow}>
+          {[
+            { emoji: '🛒', label: 'Total Orders', value: dbOrders.length || 0 },
+            { emoji: '🎨', label: 'Active Projects', value: dbProjects.length || 0 },
+            { emoji: '⭐', label: 'Loyalty Points', value: '250 pts' },
+            { emoji: '💬', label: 'Support', value: 'WhatsApp', link: 'https://wa.me/919827850842' },
+          ].map((s, i) => (
+            <motion.div
+              key={i}
+              className={styles.statCard}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
+            >
+              <span className={styles.statEmoji}>{s.emoji}</span>
+              <strong className={styles.statValue}>{s.value}</strong>
+              <span className={styles.statLabel}>{s.label}</span>
+              {s.link && <a href={s.link} target="_blank" rel="noreferrer" className={styles.statLink}>Chat Now →</a>}
+            </motion.div>
+          ))}
+        </div>
 
         <div className={styles.layout}>
           {/* Sidebar */}
@@ -279,7 +334,7 @@ const Dashboard = () => {
               <div className={styles.helpCard}>
                 <h3>Need immediate help with your project?</h3>
                 <p>Chat directly with our lead artist on WhatsApp.</p>
-                <a href="https://wa.me/91XXXXXXXXXX" className={styles.helpBtn}>CHAT NOW</a>
+                <a href="https://wa.me/919827850842?text=Hi%20Jhakkas%20Lab!%20I%20need%20help%20with%20my%20project." target="_blank" rel="noreferrer" className={styles.helpBtn}>CHAT ON WHATSAPP</a>
               </div>
             </section>
           </main>

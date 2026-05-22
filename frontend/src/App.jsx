@@ -14,6 +14,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import { CartProvider } from './context/CartContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { AuthProvider } from './context/AuthContext';
+import StickyWhatsApp from './components/StickyWhatsApp/StickyWhatsApp';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -51,30 +53,33 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <LanguageProvider>
-      <CartProvider>
-        <div 
-          className={`custom-cursor ${isHovering ? 'hovering' : ''}`} 
-          style={{ left: `${cursorPos.x}px`, top: `${cursorPos.y}px` }}
-        />
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/custom-order" element={<CustomOrder />} />
-            <Route path="/account" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </CartProvider>
-    </LanguageProvider>
+    <AuthProvider>
+      <LanguageProvider>
+        <CartProvider>
+          <div 
+            className={`custom-cursor ${isHovering ? 'hovering' : ''}`} 
+            style={{ left: `${cursorPos.x}px`, top: `${cursorPos.y}px` }}
+          />
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/custom-order" element={<CustomOrder />} />
+              <Route path="/account" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <StickyWhatsApp />
+          <Footer />
+        </CartProvider>
+      </LanguageProvider>
+    </AuthProvider>
   );
 }
 
